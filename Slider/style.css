@@ -1,0 +1,105 @@
+body {
+  background-color: rgb(9, 112, 95);
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  background-color: rgb(212, 212, 212);
+  -webkit-box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
+  box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
+}
+
+.slides {
+  display: flex;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.active-slide {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #0a0a0a;
+}
+
+.prev,
+.next,
+#pause,
+#slideFade {
+  cursor: pointer;
+  top: 50%;
+}
+
+.prev:hover,
+.next:hover,
+#pause:hover,
+#slideFade:hover {
+  background-color: rgba(8, 78, 67, 0.678);
+  border-radius: 5%;
+}
+
+.prev {
+  position: absolute;
+  left: 30%;
+  transform: translateY(-50%);
+}
+
+.next {
+  position: absolute;
+  right: 30%;
+  transform: translateY(-50%);
+}
+
+.option {
+  position: absolute;
+  left: 50%;
+  top: 78%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  text-align: center;
+}
+
+#pause {
+  border: 1px solid black;
+  margin-bottom: 5px;
+  padding: 0 5px;
+
+}
