@@ -1,5 +1,6 @@
 body {
   background-color: rgb(9, 112, 95);
+  background-image: url("perkusja.jpg");
   margin: 0;
 }
 
@@ -10,4 +11,39 @@ h1 {
   -webkit-box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
   box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
+}
+
+.keys{
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  width: 80%;
+  top: 200px;
+  margin: 0 auto;
+  padding: 10px 0;
+  color:#fff;
+  background-color: rgba(129, 122, 122, 0.925);
+}
+
+.key{
+  border: 2px solid #fff;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+}
+
+kbd{
+  display: block;
+  font-size: 40px;
+  color:yellow;
+  margin: 8px 0;
+}
+
+span{
+  color:rgb(15, 16, 17);
+  font-size: 20px;
+}
+
+.audios{
+  visibility: hidden;
 }
