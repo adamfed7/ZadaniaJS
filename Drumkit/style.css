@@ -1,6 +1,6 @@
 body {
   background-color: rgb(9, 112, 95);
-  background-image: url("perkusja.jpg");
+  background-image: url("img/perkusja.jpg");
   margin: 0;
 }
 
@@ -46,4 +46,21 @@ span{
 
 .audios{
   visibility: hidden;
+}
+
+.tracks{
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  width: 80%;
+  top: 300px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: rgba(129, 122, 122, 0.925);
+}
+
+.imagePlay:hover{
+  background-color: rgba(253, 253, 253, 0.849);
+  cursor: pointer;
 }
