@@ -1,39 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Weather in my city</title>
+    <title>Pogodynka</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <h2 class="label">Pogoda w</h2>
-      <form id="search">
-        <div class="flex">
-          <input
-            id="cityIn"
-            type="search"
-            name="city"
-            placeholder="Enter city name"
-            required
-          />
-          <input id="searchButton" type="submit" value="Get Weather" />
-        </div>
-      </form>
-
-      <section id="result">
-        <h1 id="cityOut"></h1>
-        <ul class="conditions">
-          <li class="city">
-            <img id="mainIcon" src="" alt="" />
-            <div class="main">
-              <p id="mainTemp"></p>
-              <p id="mainDescription"></p>
-            </div>
-          </li>
+    <section class="top-banner">
+      <div class="container">
+        <h1 class="heading">Pogodynka</h1>
+        <form>
+          <input type="text" placeholder="Wpisz lokalizacje" autofocus>
+          <button type="submit">Sprawdz pogodę</button>
+          <span class="msg"></span>
+        </form>
+      </div>
+    </section>
+    <section class="weather">
+      <div class="container">
+        <ul class="cities">
+          
         </ul>
-      </section>
-    </main>
+      </div>
+    </section>
     <script src="main.js"></script>
   </body>
 </html>
