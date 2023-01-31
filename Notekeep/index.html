@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notekeep</title>
   <link rel="stylesheet" href="style.css">
+  
 </head>
 
 <body>
@@ -12,18 +14,40 @@
     <h1>Notekeep by AF</h1>
   </header>
   <div class="addNote">
-    <button class="ShowAddNoteBtn" type="button" onclick="ShowAddNote()">Add note</button>
-    
+    <button class="ShowAddNoteBtn" type="button" onclick="showAddNote()">Add your note</button>
+    <button class="ShowEditNoteBtn" type="button" onclick="editMenu()">Close edit note</button>
+
     <div class="Notes">
       <label for="title">Title</label>
       <input type="text" id="title">
-      <label for="describe">Describe</label>
-      <textarea id="describe"></textarea>
+
+      <label for="description">Description</label>
+      <textarea id="description"></textarea>
+
+      <label for="color">Choose a color:</label>
+      <select id="color">
+        <option value="#a10d0d">Red</option>
+        <option value="#01bd6f">Green</option>
+        <option value="#ceca04">Yellow</option>
+        <option value="#0074d5" selected>Blue</option>
+      </select><br>
+
+      <label for="pinned">Pin:
+        <input type="checkbox" id="isPinned">
+      </label>
+
+
       <button class="AddNoteBtn" type="button" onclick="addNote()">Add</button>
+      <button class="EditNoteBtn" type="button" onclick="updateNote()">Update</button>
+
     </div>
-  
+
   </div>
-  
+
+  <div id="ListOfNotes">
+    
+  </div>
+
   <script src="main.js"></script>
 </body>
 
