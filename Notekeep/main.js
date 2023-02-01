@@ -5,8 +5,8 @@ const addNoteBtn = document.querySelector('.AddNoteBtn');
 const editNoteBtn = document.querySelector('.EditNoteBtn');
 
 var indexGlobal = 0;
-let notes = [];
-
+let notes = JSON.parse(localStorage.getItem("notes"));
+displayNotes();
 
 class Note {
     constructor(title, description, color, isPinned) {
@@ -32,6 +32,20 @@ function showAddNote() {
     }
 }
 
+function sortNodes(notes) {
+    notes = JSON.parse(localStorage.getItem("notes"));
+
+    notes.sort((a, b) => {
+        if (a.isPinned !== b.isPinned) {
+            return a.isPinned ? -1 : 1;
+        }
+    });
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+    notes = JSON.parse(localStorage.getItem("notes"));
+    return notes;
+}
+
 function addNote() {
     const titleN = document.getElementById('title').value;
     const descriptionN = document.getElementById('description').value;
@@ -51,21 +65,13 @@ function addNote() {
         localStorage.setItem("notes", JSON.stringify(notes));
         displayNotes();
         showAddNote();
-
+        location.reload();
     }
 }
 
 function displayNotes() {
-    let notes = JSON.parse(localStorage.getItem("notes"));
+    sortNodes(notes);
     let html = "";
-    
-    notes.sort((a, b) => {
-        if (a.isPinned !== b.isPinned) {
-            return a.isPinned ? -1 : 1;
-        }
-        
-    });
-
     for (let i = 0; i < notes.length; i++) {
         let note = notes[i];
         let headerColor = "";
@@ -91,21 +97,17 @@ function displayNotes() {
             <p style="text-align:left; font-weight: bold;">Description:<p>
             <p style="text-align:left;">${note.description}</p>
             
-            <p>Pin: ${note.isPinned}</p><br>
+            
 
             <button id="editBtn" onclick="editNote(${i})">Edit</button>
             <button id="deleteBtn" onclick="deleteNote(${i})">Delete</button><br>
 
-            <p style="text-align:left;">${note.createdAt}</p><br>
+            <p style="text-align:left;">${note.createdAt}</p>
+            <p style="text-align:right;">Pin: ${note.isPinned}</p>
           </div>
         `;
     }
-
-    
-
     document.getElementById("ListOfNotes").innerHTML = html;
-
-    
 }
 
 function editMenu() {
@@ -119,7 +121,6 @@ function editMenu() {
         editNoteBtn.style.display = "block";
         showEditNoteBtn.style.display = "block";
         showEditNoteBtn.style.left = "32%";
-        
     }
 }
 
@@ -130,7 +131,6 @@ function editNote(index) {
     document.getElementById('color').value = notes[index].color;
     document.getElementById('isPinned').checked = notes[index].isPinned;
     indexGlobal = index;
-
 }
 
 function updateNote() {
@@ -144,7 +144,7 @@ function updateNote() {
     localStorage.setItem("notes", JSON.stringify(notes));
     editMenu();
     displayNotes();
-
+    location.reload();
 }
 
 function deleteNote(index) {
@@ -152,5 +152,3 @@ function deleteNote(index) {
     localStorage.setItem("notes", JSON.stringify(notes));
     displayNotes();
 }
-
-
