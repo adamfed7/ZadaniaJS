@@ -13,7 +13,7 @@ h1 {
   box-shadow: 0px 5px 4px 1px rgba(66, 68, 90, 1);
 }
 
-.keys{
+.keys {
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -21,34 +21,34 @@ h1 {
   top: 200px;
   margin: 0 auto;
   padding: 10px 0;
-  color:#fff;
+  color: #fff;
   background-color: rgba(129, 122, 122, 0.925);
 }
 
-.key{
+.key {
   border: 2px solid #fff;
   height: 90px;
   width: 90px;
   text-align: center;
 }
 
-kbd{
+kbd {
   display: block;
   font-size: 40px;
-  color:yellow;
+  color: yellow;
   margin: 8px 0;
 }
 
-span{
-  color:rgb(15, 16, 17);
+span {
+  color: rgb(15, 16, 17);
   font-size: 20px;
 }
 
-.audios{
+.audios {
   visibility: hidden;
 }
 
-.tracks{
+.tracks {
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -59,18 +59,22 @@ span{
   padding: 10px 0;
   background-color: rgba(129, 122, 122, 0.925);
 }
-div > span {
+
+div>span {
   padding: 5px;
 }
+
 .imagePlay,
-.imageRecord{
+.imageRecord {
   padding: 2px 5px;
 }
+
 .imagePlay:hover,
-.imageRecord:hover{
+.imageRecord:hover {
   background-color: rgba(253, 253, 253, 0.849);
   cursor: pointer;
 }
-.imageRecord{
+
+.imageRecord {
   background: beige;
 }

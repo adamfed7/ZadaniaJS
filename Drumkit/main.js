@@ -38,16 +38,16 @@ function recordTrack(n) {
         document.removeEventListener('keypress', recording, true);
         previousTimestamp = 0;
         console.log(tracks[n]);
-        
+
     } else {
         img.style.background = "red";
         document.addEventListener('keypress', recording, true);
     }
-    
+
 }
 
 function recording(event) {
-    
+
     const sound = KeyToSound[event.key];
     const timestamp = new Date();
     const timeDiff = previousTimestamp ? timestamp - previousTimestamp : 0;
@@ -57,8 +57,7 @@ function recording(event) {
         timeDiff
     });
 
-    previousTimestamp = timestamp;
-    ;
+    previousTimestamp = timestamp;;
 };
 
 const playSounds = async (track) => {
@@ -70,3 +69,10 @@ const playSounds = async (track) => {
         sound.play();
     }
 };
+
+async function playSoundsAsync() {
+    playSounds(tracks[0]);
+    playSounds(tracks[1]);
+    playSounds(tracks[2]);
+    playSounds(tracks[3]);
+}
