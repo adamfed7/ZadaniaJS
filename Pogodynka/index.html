@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <title>Pogodynka</title>
     <link rel="stylesheet" href="style.css" />
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDliL2t1Jw-bxzWycpoFnohs9-BdyLY7fw&libraries=places&callback=initAutocomplete" defer></script>
   </head>
   <body>
     <section class="top-banner">
       <div class="container">
         <h1 class="heading">Pogodynka</h1>
         <form>
-          <input type="text" placeholder="Wpisz lokalizacje" autofocus>
+          <input id="cityName" type="text" placeholder="Wpisz lokalizacje" autofocus>
           <button type="submit">Sprawdz pogodę</button>
           <span class="msg"></span>
         </form>
