@@ -1,11 +1,12 @@
 document.addEventListener('keypress', onKeyPress);
-var track = [];
-var tracks = [
-    track,
-    track,
-    track,
-    track
+const tracks = [
+    [],
+    [],
+    [],
+    []
 ]
+var k = 0;
+let previousTimestamp;
 
 const KeyToSound = {
     'a': document.querySelector('#s1'),
@@ -29,42 +30,37 @@ function playSound(sound) {
     sound.play();
 }
 
-function recording(n) {
-    let previousTimestamp;
-    document.addEventListener('keypress', event => {
+function recordTrack(n) {
+    var img = document.getElementById('record' + n);
+    k = n;
+    if (img.style.background === "red") {
+        img.style.background = "beige";
+        document.removeEventListener('keypress', recording, true);
+        previousTimestamp = 0;
+        console.log(tracks[n]);
+        
+    } else {
+        img.style.background = "red";
+        document.addEventListener('keypress', recording, true);
+    }
+    
+}
+
+function recording(event) {
+    
     const sound = KeyToSound[event.key];
     const timestamp = new Date();
     const timeDiff = previousTimestamp ? timestamp - previousTimestamp : 0;
 
-    sound.play();
-
-    tracks[n].push({
+    tracks[k].push({
         sound,
         timeDiff
     });
 
     previousTimestamp = timestamp;
-
-    });
+    ;
 };
 
-function recordTrack(n) {
-    var img = document.getElementById('record' + n);
-
-    if (img.style.background == "red") {
-        img.style.background = "beige";
-        
-        console.log(tracks[n]);
-        
-    } else {
-        img.style.background = "red";
-        if(tracks[n].length > 0){
-            tracks[n].splice(0, track.length);
-        }
-
-        document.addEventListener('keypress', recording(n));
-    }
-}
 const playSounds = async (track) => {
     for (const {
             sound,
