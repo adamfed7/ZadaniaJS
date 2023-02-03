@@ -59,8 +59,18 @@ span{
   padding: 10px 0;
   background-color: rgba(129, 122, 122, 0.925);
 }
-
-.imagePlay:hover{
+div > span {
+  padding: 5px;
+}
+.imagePlay,
+.imageRecord{
+  padding: 2px 5px;
+}
+.imagePlay:hover,
+.imageRecord:hover{
   background-color: rgba(253, 253, 253, 0.849);
   cursor: pointer;
+}
+.imageRecord{
+  background: beige;
 }

@@ -1,6 +1,11 @@
 document.addEventListener('keypress', onKeyPress);
-var playButton = true;
-
+var track = [];
+var tracks = [
+    track,
+    track,
+    track,
+    track
+]
 
 const KeyToSound = {
     'a': document.querySelector('#s1'),
@@ -23,74 +28,49 @@ function playSound(sound) {
     sound.currentTime = 0;
     sound.play();
 }
-const pressedKeys = [];
-let lastPressTime;
 
-function start(trackNumber) {
-    
-    if (playButton) {
-        playButton = false;
-        document.querySelector(".imagePlay" + trackNumber).setAttribute("src", "img/play.png");
-        showKeys();
-        stopRecording();
+function recording(n) {
+    let previousTimestamp;
+    document.addEventListener('keypress', event => {
+    const sound = KeyToSound[event.key];
+    const timestamp = new Date();
+    const timeDiff = previousTimestamp ? timestamp - previousTimestamp : 0;
 
-    } else {
-        playButton = true;
-        document.querySelector(".imagePlay" + trackNumber).setAttribute("src", "img/pause.png");
-        startRecording();
+    sound.play();
 
-        document.addEventListener('keypress', event => {
-            const currentTime = performance.now();
-            let timeBetweenPresses = 0;
-          
-            if (lastPressTime) {
-              timeBetweenPresses = currentTime - lastPressTime;
-            }
-          
-            pressedKeys.push({
-              code: event.code,
-              time: timeBetweenPresses,
-            });
-          
-            lastPressTime = currentTime;
-          });
-        
-    }
-}
-
-
-function showKeys(){
-    console.log(pressedKeys);
-}
-let mediaRecorder;
-let audioChunks = [];
-
-function startRecording() {
-  navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-      mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.addEventListener("dataavailable", event => {
-        audioChunks.push(event.data);
-      });
-      mediaRecorder.start();
+    tracks[n].push({
+        sound,
+        timeDiff
     });
-}
 
-function stopRecording() {
-    if(mediaRecorder) {
-        mediaRecorder.stop();
-        const audioBlob = new Blob(audioChunks);
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio("sounds/audio.mp3");
-        audio.play();
+    previousTimestamp = timestamp;
+
+    });
+};
+
+function recordTrack(n) {
+    var img = document.getElementById('record' + n);
+
+    if (img.style.background == "red") {
+        img.style.background = "beige";
+        
+        console.log(tracks[n]);
+        
+    } else {
+        img.style.background = "red";
+        if(tracks[n].length > 0){
+            tracks[n].splice(0, track.length);
+        }
+
+        document.addEventListener('keypress', recording(n));
     }
 }
-
-function playRecording() {
-    if(audioChunks.length > 0) {
-        const audioBlob = new Blob(audioChunks);
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio("sounds/audio.mp3");
-        audio.play();
+const playSounds = async (track) => {
+    for (const {
+            sound,
+            timeDiff
+        } of track) {
+        await new Promise(resolve => setTimeout(resolve, timeDiff));
+        sound.play();
     }
-}
+};
