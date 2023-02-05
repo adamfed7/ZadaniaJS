@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <link rel="stylesheet" href="style.css">
+  
+
+</head>
+
+<body>
+  <header>
+    <h1>Calculator</h1>
+  </header>
+
+
+<div class="calculator">
+  <input type="number" class="input" value="1"><br>
+  <input type="number" class="input" value="2"><br>
+  <input type="number" class="input" value="3"><br>
+
+  </div>
+<div class="buttons">
+  <button id="add" onclick="add()">Dodaj pole</button><br>
+  <button id="calc" onclick="policz()">Przelicz</button>
+</div>
+
+
+
+<div class="result">
+  <label for="sum">Sum:</label>
+  <input type="number" disabled id="sum"><br>
+
+  <label for="avarage">Average:</label>
+  <input type="number" disabled id="average"><br>
+
+  <label for="min">Min:</label>
+  <input type="number" disabled id="min"><br>
+
+  <label for="max">Max:</label>
+  <input type="number" disabled id="max"><br>
+</div>
+<script src="main.js"></script>
+
+</body>
+</html>
